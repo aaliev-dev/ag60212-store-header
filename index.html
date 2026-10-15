@@ -220,27 +220,27 @@
     <div class="pcard">
       <h3>Product page header</h3>
       <div class="spec">21:9 · <b>3840 × 1646</b> · 5–30 с · звук можно включить</div>
-      <video src="video/header-web.mp4" autoplay muted loop playsinline style="width:100%;border-radius:12px;background:#000"></video>
+      <video class="lazy" data-src="video/header-web.mp4" poster="img/poster.jpg" muted loop playsinline style="width:100%;border-radius:12px;background:#000"></video>
       <div class="refcap">Референс Apple — размещение в App Store:</div>
-      <video src="img/apple-ref-product-page-header-web.mp4" autoplay muted loop playsinline style="width:100%;border-radius:12px;background:#000"></video>
+      <video class="lazy" data-src="img/apple-ref-product-page-header-web.mp4" poster="img/poster-ref-product-page-header.jpg" muted loop playsinline style="width:100%;border-radius:12px;background:#000"></video>
       <p>Наш ролик встанет на место серой заглушки в демо.</p>
     </div>
 
     <div class="pcard">
       <h3>Search results</h3>
       <div class="spec">3:2 · <b>1920 × 1280 … 3840 × 2560</b> · звук всегда выключен</div>
-      <video src="video/search-32-web.mp4" autoplay muted loop playsinline style="width:100%;border-radius:12px;background:#000"></video>
+      <video class="lazy" data-src="video/search-32-web.mp4" poster="img/poster-search.jpg" muted loop playsinline style="width:100%;border-radius:12px;background:#000"></video>
       <div class="refcap">Референс Apple — размещение в поиске:</div>
-      <video src="img/apple-ref-search-results-web.mp4" autoplay muted loop playsinline style="width:100%;border-radius:12px;background:#000"></video>
+      <video class="lazy" data-src="img/apple-ref-search-results-web.mp4" poster="img/poster-ref-search-results.jpg" muted loop playsinline style="width:100%;border-radius:12px;background:#000"></video>
       <p>Карточка приложения в поисковой выдаче; unmute недоступен.</p>
     </div>
 
     <div class="pcard">
       <h3>In-App Event card</h3>
       <div class="spec">16:9 · <b>1920 × 1080 … 3840 × 2160</b> · 15–30 с ✓</div>
-      <video src="video/event-169-web.mp4" autoplay muted loop playsinline style="width:100%;border-radius:12px;background:#000"></video>
+      <video class="lazy" data-src="video/event-169-web.mp4" poster="img/poster-event.jpg" muted loop playsinline style="width:100%;border-radius:12px;background:#000"></video>
       <div class="refcap">Референс Apple — карточка события:</div>
-      <video src="img/apple-ref-in-app-events-web.mp4" autoplay muted loop playsinline style="width:100%;border-radius:12px;background:#000"></video>
+      <video class="lazy" data-src="img/apple-ref-in-app-events-web.mp4" poster="img/poster-ref-in-app-events.jpg" muted loop playsinline style="width:100%;border-radius:12px;background:#000"></video>
       <p>Карточка события на странице приложения и в подборках.</p>
     </div>
 
@@ -249,5 +249,17 @@
 </div>
 <div class="foot">AG-60212 · P1 · срок 15 окт · экспорт из Keyshape · превью собрано для ревью</div>
 
+<script>
+  const io = new IntersectionObserver((es) => {
+    es.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const v = e.target;
+      v.src = v.dataset.src;
+      v.play().catch(() => {});
+      io.unobserve(v);
+    });
+  }, { rootMargin: "300px" });
+  document.querySelectorAll("video.lazy").forEach((v) => io.observe(v));
+</script>
 </body>
 </html>
