@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AG-60212 · Product Page Header — AdGuard VPN</title>
+<style>
+  :root{
+    --bg:#0b0e14; --panel:#12161f; --line:#232a36; --txt:#e8ecf2; --dim:#8b94a3;
+    --blue:#0a84ff; --green:#30d158;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:radial-gradient(1200px 700px at 50% -10%, #17202e 0%, var(--bg) 55%) fixed, var(--bg);
+    color:var(--txt); font:14px/1.5 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .top{max-width:1060px;margin:0 auto;padding:26px 20px 6px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+  .ttl{font-size:17px;font-weight:700;letter-spacing:.2px}
+  .key{display:inline-block;background:#1c2735;border:1px solid #2c3a4d;color:#9fc6ff;border-radius:8px;padding:2px 9px;margin-right:9px;font-weight:700;font-size:13px}
+  .chips{display:flex;gap:7px;flex-wrap:wrap}
+  .chip{border:1px solid var(--line);background:var(--panel);color:var(--dim);border-radius:99px;padding:4px 11px;font-size:12px;font-weight:600;white-space:nowrap}
+  .chip.ok{color:#7ee2a0;border-color:#1f4633}
+  .wrap{max-width:1060px;margin:18px auto 60px;padding:0 20px;display:flex;gap:44px;justify-content:center;align-items:flex-start;flex-wrap:wrap}
+
+  /* ==== iPhone ==== */
+  .phone{width:398px;border-radius:58px;background:#15181d;border:11px solid #262b33;
+    box-shadow:0 40px 90px rgba(0,0,0,.55), inset 0 0 3px rgba(255,255,255,.14);position:relative;flex:0 0 auto}
+  .island{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:112px;height:32px;border-radius:20px;background:#000;z-index:30}
+  .screen{height:800px;border-radius:47px;overflow-y:auto;overflow-x:hidden;background:#f2f2f7;color:#000;scrollbar-width:none}
+  .screen::-webkit-scrollbar{display:none}
+
+  .vhead{position:relative;background:#000}
+  .vhead video{display:block;width:100%;aspect-ratio:3840/1646;object-fit:cover}
+  .sbar{position:absolute;top:0;left:0;right:0;height:44px;display:flex;justify-content:space-between;align-items:center;
+    padding:0 24px 0 30px;color:#fff;font-weight:600;font-size:13px;z-index:5;pointer-events:none}
+  .sbar .batt{display:flex;align-items:center;gap:5px;opacity:.95}
+  .batt .body{width:22px;height:11px;border:1.5px solid #fff;border-radius:3px;position:relative;opacity:.9}
+  .batt .body::after{content:"";position:absolute;inset:1.5px;right:4px;background:#fff;border-radius:1px}
+  .batt .cap{width:1.5px;height:4px;background:#fff;border-radius:0 1px 1px 0;opacity:.9}
+
+  .navbar{display:flex;justify-content:space-between;align-items:center;padding:10px 16px 6px;color:var(--blue);font-size:15px;font-weight:500}
+  .navbar b{color:#000;font-weight:600;font-size:17px}
+  .app{display:flex;gap:14px;align-items:center;padding:6px 16px 14px}
+  .icon{width:78px;height:78px;border-radius:18px;flex:0 0 auto;box-shadow:0 6px 16px rgba(0,60,150,.25);overflow:hidden}
+  .app .meta{flex:1;min-width:0}
+  .app h1{font-size:19px;margin:0;font-weight:600;line-height:1.15}
+  .app p{margin:2px 0 0;font-size:12.5px;color:#6b7080}
+  .get{background:#eef0f4;color:var(--blue);font-weight:700;font-size:14px;border-radius:99px;padding:7px 22px;letter-spacing:.4px;flex:0 0 auto}
+  .stats{display:flex;justify-content:space-around;padding:12px 8px 14px;border-top:.5px solid #e2e2e7;border-bottom:.5px solid #e2e2e7;margin:0 16px}
+  .stat{text-align:center;font-size:11px;color:#8a8f9c;flex:1}
+  .stat b{display:block;font-size:17px;color:#6b7080;font-weight:600}
+  .stat b i{font-style:normal;font-size:12px;color:#f5a623}
+  .sec{padding:18px 16px 8px;font-size:20px;font-weight:700}
+  .shots{display:flex;gap:10px;overflow-x:auto;padding:2px 16px 6px;scrollbar-width:none}
+  .shots::-webkit-scrollbar{display:none}
+  .shots img{height:340px;border-radius:16px;border:.5px solid #d8d8de;flex:0 0 auto}
+  .about{padding:0 16px;font-size:13.5px;color:#333}
+  .about p{margin:0 0 10px}
+  .review{margin:8px 16px 18px;background:#fff;border-radius:14px;padding:12px 14px;font-size:12.5px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+  .review .rr{color:#f5a623;font-size:12px;letter-spacing:1px}
+  .review .rt{font-weight:700;margin:2px 0}
+  .review p{margin:2px 0 0;color:#555}
+  .tabbar{position:sticky;bottom:0;background:rgba(249,249,251,.92);backdrop-filter:blur(10px);
+    border-top:.5px solid #dcdce1;display:flex;padding:7px 4px 14px;justify-content:space-around}
+  .tab{font-size:10px;color:#9a9aa2;text-align:center;flex:1}
+  .tab.on{color:var(--blue)}
+  .tab .ic{display:block;width:22px;height:22px;margin:0 auto 3px;border:1.8px solid currentColor;border-radius:7px;opacity:.9}
+  .tab .ic.f{border-radius:50%}
+
+  /* ==== side panel ==== */
+  .side{flex:1 1 320px;max-width:430px;min-width:290px}
+  .side h2{font-size:15px;margin:0 0 8px;font-weight:700;color:#cfd7e3}
+  .side .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:14px}
+  .side p{margin:0 0 10px;color:#aab3c2;font-size:13.5px}
+  .side a{color:#7db4ff;text-decoration:none;font-weight:600}
+  .side .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin-top:10px}
+  .side .kv{font-size:12.5px;color:var(--dim)}
+  .side .kv b{display:block;color:var(--txt);font-weight:600;font-size:13.5px}
+  .foot{max-width:1060px;margin:0 auto 50px;padding:0 20px;color:#5c6472;font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="ttl"><span class="key">AG-60212</span>Product page header · AdGuard VPN for iOS</div>
+  <div class="chips">
+    <span class="chip ok">3840 × 1646</span>
+    <span class="chip ok">21:9</span>
+    <span class="chip ok">60 fps</span>
+    <span class="chip ok">15.02 с (5–30 ✓)</span>
+    <span class="chip ok">H.264 · .mp4</span>
+    <span class="chip ok">луп без склеек</span>
+    <span class="chip">39 локалей</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="phone">
+    <div class="island"></div>
+    <div class="screen">
+      <div class="vhead">
+        <div class="sbar"><span>9:41</span><span class="batt"><svg width="16" height="11" viewBox="0 0 16 11" fill="#fff"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="3" width="3" height="8" rx="1"/></svg><span class="body"></span><span class="cap"></span></span></div>
+        <video src="video/header-web.mp4" poster="img/crop-12.0.png" autoplay muted loop playsinline></video>
+      </div>
+
+      <div class="navbar"><span>‹ Apps</span><b>Product Page</b><span style="opacity:.35">⋯</span></div>
+
+      <div class="app">
+        <div class="icon">
+          <svg viewBox="0 0 78 78" width="78" height="78">
+            <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#37b7ff"/><stop offset="1" stop-color="#1868d8"/>
+            </linearGradient></defs>
+            <rect width="78" height="78" rx="17" fill="url(#g)"/>
+            <path d="M39 13 L57 19.5 V36 C57 48 49.5 56.5 39 61 C28.5 56.5 21 48 21 36 V19.5 Z" fill="#fff"/>
+            <path d="M30 40 C34 34 38 34 39 37 C40 40 44 40 48 34 L48 42 C44 47 40 47 39 44 C38 41 34 41 30 47 Z" fill="#1868d8"/>
+          </svg>
+        </div>
+        <div class="meta">
+          <h1>AdGuard VPN — Private Proxy</h1>
+          <p>Fast, private &amp; secure VPN service</p>
+        </div>
+        <div class="get">GET</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b>4.8 <i>★</i></b>72.4K Ratings</div>
+        <div class="stat"><b>#1</b>VPN</div>
+        <div class="stat"><b>4+</b>Age</div>
+        <div class="stat"><b>#9</b>Utilities</div>
+      </div>
+
+      <div class="sec">Preview</div>
+      <div class="shots">
+        <img src="img/crop-2.7.png" alt="Header still — flying ninja over Germany">
+        <img src="img/crop-12.0.png" alt="Header still — tunnel finale">
+        <img src="img/crop-13.8.png" alt="Header still — logo">
+      </div>
+
+      <div class="sec">About</div>
+      <div class="about">
+        <p>AdGuard VPN hides your real location, encrypts traffic and keeps no logs. Reliable protection wherever you are.</p>
+        <p>The new product page header introduces the AdGuard tengu — a ninja who slips past anything that tries to track you: borders, banners, blockers.</p>
+      </div>
+
+      <div class="review">
+        <div class="rr">★★★★★</div>
+        <div class="rt">Best ninja in the store</div>
+        <p>Even the App Store can’t block this header. — tengu_fan_92</p>
+      </div>
+
+      <div class="tabbar">
+        <div class="tab"><span class="ic f"></span>Today</div>
+        <div class="tab"><span class="ic"></span>Games</div>
+        <div class="tab on"><span class="ic"></span>Apps</div>
+        <div class="tab"><span class="ic f"></span>Arcade</div>
+        <div class="tab"><span class="ic f"></span>Search</div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="side">
+    <div class="card">
+      <h2>Что в задаче</h2>
+      <p>iOS 27 / iPadOS 27 — новый тип ассетов <b>creative assets</b>. Собран Product page header: анимированный тэнгу AdGuard VPN — пролёты ниндзя на фоне флагов, финал с тоннелем и лого.</p>
+      <div class="grid">
+        <div class="kv">Разрешение<b>3840 × 1646 (21:9)</b></div>
+        <div class="kv">Частота<b>60 fps</b></div>
+        <div class="kv">Длительность<b>15.02 с (5–30 ✓)</b></div>
+        <div class="kv">Формат<b>.mp4 · H.264</b></div>
+        <div class="kv">Локали<b>1 ролик → все 39*</b></div>
+        <div class="kv">Звук<b>нет — луп без звука ✓</b></div>
+      </div>
+      <p style="margin-top:12px;font-size:12px">* в видео нет локализуемого текста — только лого. Подтвердить у @vo.</p>
+    </div>
+
+    <div class="card">
+      <h2>Луп</h2>
+      <p>Финал уходит в чёрный (14.1–14.6), хвост держит чёрный кадр, старт начинается из чёрного — ниндзя влетает из-за экрана. Стык 15 с → 0 с без видимой склейки.</p>
+    </div>
+
+    <div class="card">
+      <h2>Файлы</h2>
+      <p><a href="video/header-original.mp4" download>Скачать оригинал 3840×1646 · 60 fps (39 МБ)</a> — именно он идёт в Asset Library App Store Connect.</p>
+      <p style="margin-bottom:0">На странице играет веб-копия 1920×823 (~2 МБ) для быстрой загрузки.</p>
+    </div>
+  </aside>
+
+</div>
+
+<div class="foot">AG-60212 · P1 · срок 15 окт · экспорт из Keyshape · превью собрано для ревью</div>
+
+</body>
+</html>
